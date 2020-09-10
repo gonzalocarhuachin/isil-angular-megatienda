@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;700;900&display=swap');
+body
+{
+    background-color: #dddddd;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1
+{
+    font-weight: 900;
+    font-size: 48px;
+    letter-spacing: -2px;
+    /*margin-bottom: 0px*/
+}
+
+h2
+{
+    font-weight: 100;
+    font-size: 36px;
+    letter-spacing: -2px;
+    text-transform: lowercase;
+}
+
+h3
+{
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -1px;
+}
+
+h4
+{
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.padded
+{
+    padding-top: 75px;
+    padding-bottom: 75px;
+}
