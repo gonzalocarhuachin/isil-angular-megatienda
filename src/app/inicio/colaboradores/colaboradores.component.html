@@ -13,7 +13,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let itemColaborador of listaColaboradores">
+                        <tr *ngFor="let itemColaborador of listaColaboradores"
+                            (click)="seleccionarColaborador(itemColaborador)"
+                            [class.fila-seleccionada]="itemColaborador === colaboradorEscogido">
                             <td>{{itemColaborador.id}}</td>
                             <td>{{itemColaborador.nombres}}</td>
                             <td>{{itemColaborador.cargo}}</td>
@@ -21,9 +23,13 @@
                         </tr>
                     </tbody>
                 </table>
+                <h4>{{colaboradorGanador.nombres}}</h4>
             </div>
-            <div class="col-md-4">
-
+            <div class="col-md-4" *ngIf="colaboradorEscogido">
+                <h3>{{colaboradorEscogido.nombres}}</h3>
+                <img src="{{colaboradorEscogido.foto}}" class="img-fluid">
+                <p>{{colaboradorEscogido.cargo}}</p>
+                <p>{{colaboradorEscogido.ciudad}}</p>
             </div>
         </div>
     </div>

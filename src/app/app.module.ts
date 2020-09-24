@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { TiendaComponent } from './components/tienda/tienda.component';
 import { ProveedoresComponent } from './components/proveedores/proveedores.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { HomeComponent } from './inicio/home/home.component';
+import { EnviosComponent } from './inicio/envios/envios.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +29,14 @@ import { HomeComponent } from './inicio/home/home.component';
     TiendaComponent,
     ProveedoresComponent,
     CarritoComponent,
-    HomeComponent
+    HomeComponent,
+    EnviosComponent
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
