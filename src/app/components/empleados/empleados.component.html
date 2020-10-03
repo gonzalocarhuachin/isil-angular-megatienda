@@ -1,0 +1,18 @@
+<section id="empleados" class="padded">
+    <div class="container">
+        <h2>Empleados</h2>
+
+        <div class="row row-cols-1 row-cols-md-3">
+            <div class="col mb-4" *ngFor="let itemEmpleado of listaEmpleados">
+              <div class="card">
+                <img src="http://localhost/servicioangular/empleados/{{itemEmpleado.foto}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{itemEmpleado.cargo}}</h5>
+                  <p class="card-text">{{itemEmpleado.tratamiento}} {{itemEmpleado.nombres}} {{itemEmpleado.apellidos}}</p>
+                  <p class="card-text">{{itemEmpleado.ciudad}} / {{itemEmpleado.pais}}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>

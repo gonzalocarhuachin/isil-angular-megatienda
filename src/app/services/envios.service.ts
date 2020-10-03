@@ -14,7 +14,7 @@ export class EnviosService {
   constructor(private http: HttpClient) { }
 
   enviosSelect(): Observable<Envio[]>{
-    const ruta = "https://pix.pe/servicioandroid/servicioenvios.php";
+    const ruta = "http://localhost/servicioangular/envios.php";
     return this.http.post<Envio[]>(ruta,null).pipe(
       map((res) => {
         this.envios = JSON.parse(JSON.stringify(res));

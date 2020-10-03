@@ -16,6 +16,7 @@ import { ProveedoresComponent } from './components/proveedores/proveedores.compo
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { HomeComponent } from './inicio/home/home.component';
 import { EnviosComponent } from './inicio/envios/envios.component';
+import { EmpleadosComponent } from './components/empleados/empleados.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { EnviosComponent } from './inicio/envios/envios.component';
     ProveedoresComponent,
     CarritoComponent,
     HomeComponent,
-    EnviosComponent
+    EnviosComponent,
+    EmpleadosComponent
   ],
   imports: [
     BrowserModule,
