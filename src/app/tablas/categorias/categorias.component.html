@@ -1,0 +1,54 @@
+<section id="categorias" class="padded">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h2>Categorias</h2>
+                <div class="form-group">
+                    <button class="btn-primary"
+                        (click)="mostrarFormularioAgregar()">
+                        Nueva Categoria
+                    </button>
+                </div>
+                <div id="formulario-agregar">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Descripcion">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                Agregar
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-secondary"
+                                (click)="cerrarFormularioAgregar()">
+                                Cerrar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let itemCategoria of listaCategorias">
+                            <td>{{itemCategoria.idcategoria}}</td>
+                            <td>{{itemCategoria.nombre}}</td>
+                            <td>{{itemCategoria.descripcion}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

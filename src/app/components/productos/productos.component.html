@@ -1,18 +1,51 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th>Cod</th>
-            <th>Nombre</th>
-            <th>Detalle</th>
-            <th>Precio</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let itemProducto of listaProductos">
-            <td>{{itemProducto.idproducto}}</td>
-            <td>{{itemProducto.nombre}}</td>
-            <td>{{itemProducto.detalle}}</td>
-            <td>{{itemProducto.precio}}</td>
-        </tr>
-    </tbody>
-</table>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#tabla" role="tab" aria-controls="home" aria-selected="true">Tabla</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#cuadricula" role="tab" aria-controls="profile" aria-selected="false">Cuadricula</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="tabla" role="tabpanel" aria-labelledby="home-tab">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Cod</th>
+                    <th>Nombre</th>
+                    <th>Detalle</th>
+                    <th class="text-right">Precio (S/.)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let itemProducto of listaProductos">
+                    <td>{{itemProducto.idproducto}}</td>
+                    <td>{{itemProducto.nombre}}</td>
+                    <td>{{itemProducto.detalle}}</td>
+                    <td class="text-right">{{itemProducto.precio | number:'.2'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="cuadricula" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="row row-cols-1 row-cols-md-3">
+            <div class="col mb-4" *ngFor="let itemProducto of listaProductos">
+              <div class="card">
+                <img src="http://localhost/servicioangular/{{itemProducto.imagengrande}}" class="card-img-top" alt="...">
+                <div class="mensaje-oferta"
+                    [class.producto-sin-oferta]="itemProducto.enoferta==0">
+                    Oferta
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{itemProducto.nombre}}</h5>
+                  <p class="card-text">{{itemProducto.detalle}}</p>
+                  <p class="card-text"> S/. {{itemProducto.precio | number:'.2'}}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

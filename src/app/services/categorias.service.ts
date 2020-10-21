@@ -22,4 +22,18 @@ export class CategoriasService {
       })
     )
   }
+
+  categoriasInsert(nombre,descripcion){
+    const ruta = "http://localhost/servicioangular/categorias_insert.php";
+
+    const formData: FormData = new FormData();
+    formData.append("nombre",nombre);
+    formData.append("descripcion",descripcion);
+
+    return this.http.post(ruta,formData).pipe(
+      map((res) => {
+        return res;
+      })
+    )
+  }
 }

@@ -18,6 +18,7 @@ import { HomeComponent } from './inicio/home/home.component';
 import { EnviosComponent } from './inicio/envios/envios.component';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { ProductosComponent } from './components/productos/productos.component';
+import { CategoriasComponent } from './tablas/categorias/categorias.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ProductosComponent } from './components/productos/productos.component';
     HomeComponent,
     EnviosComponent,
     EmpleadosComponent,
-    ProductosComponent
+    ProductosComponent,
+    CategoriasComponent
   ],
   imports: [
     BrowserModule,
