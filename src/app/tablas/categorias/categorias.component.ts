@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Categoria } from 'src/app/entities/categoria';
 import { CategoriasService } from 'src/app/services/categorias.service';
+import { faEdit, faTimes } from '@fortawesome/free-solid-svg-icons';
 declare var $:any; //Habilitar el selector $ de Jquery
 
 @Component({
@@ -17,6 +18,18 @@ export class CategoriasComponent implements OnInit {
     nombre: new FormControl(),
     descripcion: new FormControl()
   });
+
+  nuevaCategoria: any = {};
+  faEdit = faEdit;
+  faTimes = faTimes;
+
+  categoriasActualizarForm = new FormGroup({
+    idcategoria: new FormControl(),
+    nombre: new FormControl(),
+    descripcion: new FormControl()
+  });
+
+  categoriaActualizar: Categoria;
 
   constructor(private categoriasService: CategoriasService) { }
 
@@ -38,6 +51,33 @@ export class CategoriasComponent implements OnInit {
 
   cerrarFormularioAgregar(){
     $("#formulario-agregar").slideUp("slow");
+  }
+
+  agregarCategoria(values){
+    console.log(values);
+    this.categoriasService.categoriasInsert(values.nombre,values.descripcion).subscribe(
+      (res) => {
+        console.log(res);
+        this.nuevaCategoria = {
+          idcategoria: res,
+          nombre: values.nombre,
+          descripcion: values.descripcion
+        }
+        this.listaCategorias.push(this.nuevaCategoria);
+        this.categoriasAgregarForm.reset();
+        $("#formulario-agregar").slideUp("slow");
+      }
+    )
+  }
+
+  seleccionar(itemCategoria: Categoria){
+    console.log(itemCategoria);
+    this.categoriaActualizar = itemCategoria;
+    $('#formulario-actualizar').modal('show');
+  }
+
+  eliminar(itemCategoria: Categoria){
+    
   }
 
 }

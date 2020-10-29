@@ -10,12 +10,20 @@
                     </button>
                 </div>
                 <div id="formulario-agregar">
-                    <form>
+                    <form ngNativeValidate
+                        [formGroup]="categoriasAgregarForm"
+                        (ngSubmit)="agregarCategoria(categoriasAgregarForm.value)">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nombre">
+                            <input type="text" class="form-control" 
+                            formControlName="nombre"
+                            required minlength="4" maxlength="25" 
+                            placeholder="Nombre">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Descripcion">
+                            <input type="text" class="form-control" 
+                            formControlName="descripcion"
+                            required minlength="8" maxlength="50" 
+                            placeholder="Descripcion">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">
@@ -38,6 +46,8 @@
                             <th>Codigo</th>
                             <th>Nombre</th>
                             <th>Descripcion</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,6 +55,8 @@
                             <td>{{itemCategoria.idcategoria}}</td>
                             <td>{{itemCategoria.nombre}}</td>
                             <td>{{itemCategoria.descripcion}}</td>
+                            <td><fa-icon [icon]="faEdit" (click)="seleccionar(itemCategoria)"></fa-icon></td>
+                            <td><fa-icon [icon]="faTimes" (click)="eliminar(itemCategoria)"></fa-icon></td>
                         </tr>
                     </tbody>
                 </table>
@@ -52,3 +64,37 @@
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="formulario-actualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form>
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" class="form-control" 
+                    formControlName="nombre"
+                    required minlength="4" maxlength="25" 
+                    placeholder="Nombre">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" 
+                    formControlName="descripcion"
+                    required minlength="8" maxlength="50" 
+                    placeholder="Descripcion">
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -36,4 +36,15 @@ export class CategoriasService {
       })
     )
   }
+
+  categoriasUpdate(idcategoria, nombre, descripcion){
+    const ruta = "http://localhost/servicioangular/categorias_update.php";
+
+    const formData: FormData = new FormData();
+    formData.append("idcategoria",idcategoria);
+    formData.append("nombre",nombre);
+    formData.append("descripcion",descripcion);
+
+    return this.http.post(ruta,formData);
+  }
 }
