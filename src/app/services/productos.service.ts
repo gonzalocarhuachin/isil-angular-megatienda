@@ -26,4 +26,18 @@ export class ProductosService {
       })
     )
   }
+
+  productosSoloSelect(idproducto): Observable<Producto[]>{
+    const ruta = "http://localhost/servicioangular/producto_solo.php";
+
+    const formData: FormData = new FormData();
+    formData.append("idproducto",idproducto);
+
+    return this.http.post<Producto[]>(ruta,formData).pipe(
+      map((res) => {
+        this.productos = JSON.parse(JSON.stringify(res));
+        return this.productos;
+      })
+    )
+  }
 }

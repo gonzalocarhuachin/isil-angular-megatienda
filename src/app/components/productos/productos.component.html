@@ -39,7 +39,11 @@
                 <div class="card-body">
                   <h5 class="card-title">{{itemProducto.nombre}}</h5>
                   <p class="card-text">{{itemProducto.detalle}}</p>
-                  <p class="card-text"> S/. {{itemProducto.precio | number:'.2'}}</p>
+                  <p class="card-text"> S/. {{itemProducto.precio | number:'.2'}}
+                      <a [routerLink]="['/carrito',{idproducto:itemProducto.idproducto}]">
+                        <fa-icon [icon] = "faCartPlus"></fa-icon>
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>

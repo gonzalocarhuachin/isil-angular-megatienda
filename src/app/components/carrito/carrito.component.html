@@ -1,5 +1,36 @@
 <section id="carrito" class="padded">
     <div class="container">
-        <h2>Carrito</h2>
-    </div>
-</section>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Carrito de compras</h2>
+                <button class="btn btn-primary" (click)="vaciarCarrito()">
+                    Vaciar carrito
+                </button>
+        </div>    
+        <div class="col-md-8">
+            <table class="table table-dark">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                            
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of items">
+                        <td>{{item.producto.idproducto}}</td>
+                        <td>{{item.producto.nombre}}</td>
+                        <td>{{item.producto.precio}}</td>
+                        <td>{{item.cantidad}}</td>
+                        <td>{{item.producto.precio * item.cantidad}}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>        
+        </div>   
+        </div><!-- row -->    
+    </div><!-- container -->
+</section>         

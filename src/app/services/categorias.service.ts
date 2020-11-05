@@ -47,4 +47,13 @@ export class CategoriasService {
 
     return this.http.post(ruta,formData);
   }
+
+  categoriasDelete(idcategoria){
+    const ruta = "http://localhost/servicioangular/categorias_delete.php";
+
+    const formData: FormData = new FormData();
+    formData.append("idcategoria",idcategoria);
+
+    return this.http.post(ruta,formData);
+  }
 }

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Categoria } from 'src/app/entities/categoria';
 import { Producto } from 'src/app/entities/producto';
 import { ProductosService } from 'src/app/services/productos.service';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-productos',
@@ -11,6 +12,8 @@ import { ProductosService } from 'src/app/services/productos.service';
 export class ProductosComponent implements OnInit {
 @Input() CategoriaX: Categoria;
 listaProductos: Producto[];
+faCartPlus = faCartPlus;
+
   constructor(private productosService: ProductosService) { }
 
   ngOnInit(): void {

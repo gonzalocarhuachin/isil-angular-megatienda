@@ -77,7 +77,22 @@ export class CategoriasComponent implements OnInit {
   }
 
   eliminar(itemCategoria: Categoria){
-    
+    var respuesta = confirm("Esta seguro que desea eliminar la categoria " + itemCategoria.nombre + "?");
+    if (respuesta == true) {
+      this.categoriasService.categoriasDelete(itemCategoria.idcategoria).subscribe();
+      this.listaCategorias = this.listaCategorias.filter(
+        item => item.idcategoria !== itemCategoria.idcategoria
+      );
+      alert("Se ha eliminado la categoria " + itemCategoria.nombre);
+    }
+  }
+
+  actualizarCategoria(values){
+    console.log(values);
+    this.categoriasService.categoriasUpdate(
+      values.idcategoria,values.nombre,values.descripcion).subscribe();
+      alert("Se ha actualizadp la categoria de codigo: "+ values.idcategoria);
+      $('#formulario-actualizar').modal('hide');
   }
 
 }
