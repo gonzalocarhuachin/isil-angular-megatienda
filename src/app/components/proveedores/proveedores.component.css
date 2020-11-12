@@ -1,0 +1,9 @@
+th span{
+    visibility: hidden;
+}
+th.active span{
+    visibility: visible;
+}
+.active{
+    visibility: visible;
+}

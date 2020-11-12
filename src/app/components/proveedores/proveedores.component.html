@@ -1,5 +1,43 @@
 <section id="proveedores" class="padded">
     <div class="container">
         <h2>Proveedores</h2>
+        <div class="form-group">
+            <input type="text" class="form-control" 
+            [(ngModel)]="ProveedoresFilter.nombreempresa" placeholder="Escriba el nombre de la empresa a buscar">
+        </div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Codigo</th>
+                    <th (click)="setOrder('nombreempresa')"
+                        [class.active]="order==='nombreempresa'">
+                        Empresa
+                        <span [hidden]="reverse"><fa-icon [icon]="faChevronUp"></fa-icon></span>
+                        <span [hidden]="!reverse"><fa-icon [icon]="faChevronDown"></fa-icon></span>
+                    </th>
+                    <th (click)="setOrder('nombrecontacto')"
+                        [class.active]="order==='nombrecontacto'">
+                        Contacto
+                        <span [hidden]="reverse"><fa-icon [icon]="faChevronUp"></fa-icon></span>
+                        <span [hidden]="!reverse"><fa-icon [icon]="faChevronDown"></fa-icon></span>
+                    </th>
+                    <th>Cargo</th>
+                    <th>Pais</th>
+                    <th>Ciudad</th>
+                    <th>Telefono</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let itemProveedor of listaProveedores | filterBy: ProveedoresFilter | orderBy: order : reverse">
+                    <td>{{itemProveedor.idproveedor}}</td>
+                    <td>{{itemProveedor.nombreempresa }}</td>
+                    <td>{{itemProveedor.nombrecontacto}}</td>
+                    <td>{{itemProveedor.cargocontacto}}</td>
+                    <td>{{itemProveedor.pais}}</td>
+                    <td>{{itemProveedor.ciudad}}</td>
+                    <td>{{itemProveedor.telefono}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>

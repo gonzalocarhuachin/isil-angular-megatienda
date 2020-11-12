@@ -46,8 +46,30 @@ export class CarritoComponent implements OnInit {
         }
         console.log(itemCarrito);
         let carrito: any
-        carrito = [];
-        carrito.push(JSON.stringify(ItemCarrito))
+        if(localStorage.getItem("carrito") === null){
+          carrito = [];
+          carrito.push(JSON.stringify(itemCarrito))
+        }
+        else{
+          carrito = JSON.parse(localStorage.getItem("carrito"))
+          let index: number = -1;
+          for(var i = 0; i < carrito.length; i++){
+            let item: ItemCarrito = JSON.parse(carrito[i]);
+            if(item.producto.idproducto === idproducto){
+              index = i;
+              break;
+            }
+          }
+          if(index === -1){
+            carrito.push(JSON.stringify(itemCarrito));
+          }
+          else{
+            let item: ItemCarrito = JSON.parse(carrito[index]);
+            item.cantidad++;
+            carrito[index] = JSON.stringify(item);
+          }
+        }
+        
         localStorage.setItem("carrito",JSON.stringify(carrito))
         this.mostrarCarrito()
       }
@@ -67,8 +89,9 @@ export class CarritoComponent implements OnInit {
     }
   }
 
-  vaciarCarrito():void{
-    
+  vaciarCarrito(){
+    this.items = [];
+    localStorage.removeItem("carrito");
   }
 
 }
